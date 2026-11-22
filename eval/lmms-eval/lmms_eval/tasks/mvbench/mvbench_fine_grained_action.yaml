@@ -1,0 +1,10 @@
+include: _default_template_yaml
+task: mvbench_fine_grained_action
+test_split: train
+lmms_eval_specific_kwargs:
+  default:
+    sub_task: fine_grained_action
+    post_prompt: "Only give the best option.\n"
+dataset_path: ${DATA_ROOT}/general/mvbench/ds/fine_grained_action
+dataset_kwargs:
+  load_from_disk: True

@@ -1,0 +1,10 @@
+include: _default_template_yaml
+task: mvbench_egocentric_navigation
+test_split: train
+lmms_eval_specific_kwargs:
+  default:
+    sub_task: egocentric_navigation
+    post_prompt: "Only give the best option.\n"
+dataset_path: ${DATA_ROOT}/general/mvbench/ds/egocentric_navigation
+dataset_kwargs:
+  load_from_disk: True

@@ -1,0 +1,19 @@
+# data, models, results, virtualenvs (layout in data_tools/layout.py)
+dataset/
+ckpt/
+output/
+envs/
+logs/
+wandb/
+train/rl*/wandb/
+
+__pycache__/
+*.pyc
+*.log
+*.egg-info/
+dist/
+build/
+.DS_Store
+.env
+.env.*
+!.env.example

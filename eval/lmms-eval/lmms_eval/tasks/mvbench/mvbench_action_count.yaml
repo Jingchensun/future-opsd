@@ -1,0 +1,10 @@
+include: _default_template_yaml
+task: mvbench_action_count
+test_split: train
+lmms_eval_specific_kwargs:
+  default:
+    sub_task: action_count
+    post_prompt: "Only give the best option.\n"
+dataset_path: ${DATA_ROOT}/general/mvbench/ds/action_count
+dataset_kwargs:
+  load_from_disk: True

@@ -6,6 +6,7 @@
 <sup>1</sup> University at Buffalo &nbsp;&nbsp; <sup>2</sup> Stony Brook University &nbsp;&nbsp; <sup>3</sup> Johns Hopkins University &nbsp;&nbsp; <sup>4</sup> Duke University<br>
 <sup>5</sup> University of Maryland, College Park &nbsp;&nbsp; <sup>6</sup> Independent Researcher
 
+[![arXiv](https://img.shields.io/badge/arXiv-2611.26954-b31b1b.svg?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2611.26954)
 [![Project Page](https://img.shields.io/badge/Project-Page-2563eb?logo=googlechrome&logoColor=white)](https://jingchensun.github.io/future-opsd/)
 [![GitHub Project](https://img.shields.io/badge/GitHub-Project-blue?logo=github)](https://github.com/Jingchensun/future-opsd)
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-ffc107)](https://huggingface.co/jsun39)
@@ -365,9 +366,12 @@ subject to the terms of their original releases.
 
 ```bibtex
 @misc{sun2026futureopsd,
-  title  = {Learning Video Foresight Reasoning from Unlabeled Videos via On-Policy Self-Distillation},
-  author = {Jingchen Sun and Jiaxing Zhang and Qingqiao Hu and Dingqiang Ye and Yuqi Jia and Yijun Liang and Di Fu and Yunjie Tian and Dongdi Zhao and Changyou Chen},
-  year   = {2026},
-  note   = {\url{https://jingchensun.github.io/future-opsd/}}
+  title         = {Learning Video Foresight Reasoning from Unlabeled Videos via On-Policy Self-Distillation},
+  author        = {Jingchen Sun and Jiaxing Zhang and Qingqiao Hu and Dingqiang Ye and Yuqi Jia and Yijun Liang and Di Fu and Yunjie Tian and Dongdi Zhao and Changyou Chen},
+  year          = {2026},
+  eprint        = {2611.26954},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2611.26954}
 }
 ```

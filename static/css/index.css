@@ -969,6 +969,12 @@ a:focus {
   max-width: 720px;
 }
 
+/* Hugging Face button: the logo is the 🤗 emoji (Font Awesome 5 has no HF icon) */
+.hf-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
 .results-table thead tr + tr th {
   font-weight: 600;
   font-size: 0.8rem;

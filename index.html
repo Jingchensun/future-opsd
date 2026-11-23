@@ -210,23 +210,87 @@
   </section>
 
 
-  <!-- Teaser image -->
+  <!-- Intro slides: 1) background / task, 2) motivation -->
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <figure class="paper-figure teaser-figure">
-          <img src="static/images/teaser.png" alt="Not all of the future is equally important: only rinse the knife is content information, while tap, dish rack, sink and sponge are context information.">
-        </figure>
-        <h2 class="subtitle has-text-centered figure-caption">
-          <strong>Not all of the future is equally important.</strong>
-          To answer <em>what will I do next?</em> from what is seen now, only a small part of the future clip carries
-          content information (<em>rinse the knife</em>). Most of it is context information (tap, dish rack, sink, sponge)
-          that neither answers the question nor reflects the expected action.
-        </h2>
+        <div class="intro-deck" id="intro-deck" role="region" aria-roledescription="carousel" aria-label="Background and motivation" tabindex="0">
+          <div class="intro-track">
+
+            <!-- Slide 1: Background -->
+            <article class="intro-slide is-active" id="intro-slide-1" role="group" aria-roledescription="slide" aria-label="1 of 2: Background">
+              <p class="slide-eyebrow">Background</p>
+              <h2 class="slide-title">Video Foresight Reasoning: Anticipating What Happens Next</h2>
+
+              <div class="bg-grid">
+                <div class="task-case task-open">
+                  <span class="task-pill">Open-ended prediction</span>
+                  <img src="static/images/task-open-ended.jpg" width="480" height="270" alt="A cook standing at a kitchen counter next to a glass bowl of chopped vegetables, having just picked up asparagus.">
+                  <p class="task-q"><b>Q:</b> What should be done next after picking up the asparagus?</p>
+                  <p class="task-a"><b>A:</b> Add the asparagus to the bowl of vegetables.</p>
+                  <p class="task-eval">Evaluated on TwiFF-Bench (LLM-judged reasoning &amp; answer)</p>
+                </div>
+
+                <div class="task-case task-plan">
+                  <span class="task-pill">Closed-ended planning</span>
+                  <img src="static/images/task-closed-ended.jpg" width="456" height="256" alt="Egocentric view of a kitchen counter with dough balls on a tray, a rolling pin and greaseproof paper.">
+                  <p class="task-q"><b>Goal:</b> place dough on greaseproof paper.<br><b>Q:</b> What is my next step?</p>
+                  <ul class="task-options">
+                    <li class="is-correct">A. pick up greaseproof <span class="nowrap">paper&nbsp;<i class="fas fa-check" aria-hidden="true"></i></span><span class="is-sr-only">(correct)</span></li>
+                    <li>B. put dough on greaseproof paper</li>
+                    <li>C. put down chopstick</li>
+                    <li>D. pick up dough balls</li>
+                  </ul>
+                  <p class="task-eval">Evaluated on SEED-Bench-R1 (accuracy)</p>
+                </div>
+
+                <div class="bg-text">
+                  <h3>Task</h3>
+                  <p>
+                    Infer plausible future events or next actions from an observed video by reasoning over
+                    visual dynamics, causal relations, and agent intentions.
+                  </p>
+                  <h3>Why it matters</h3>
+                  <ul class="why-list">
+                    <li><span class="why-icon why-blue"><i class="fas fa-car" aria-hidden="true"></i></span><span><b>Autonomous driving</b>anticipate other agents</span></li>
+                    <li><span class="why-icon why-orange"><i class="fas fa-robot" aria-hidden="true"></i></span><span><b>Embodied robotics</b>plan the next manipulation</span></li>
+                    <li><span class="why-icon why-green"><i class="fas fa-glasses" aria-hidden="true"></i></span><span><b>Egocentric assistants</b>help before being asked</span></li>
+                    <li><span class="why-icon why-crimson"><i class="fas fa-globe" aria-hidden="true"></i></span><span><b>World models</b>imagine outcomes to plan</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <p class="slide-takeaway">Foresight is a core capability for VLMs that act in the real world</p>
+            </article>
+
+            <!-- Slide 2: Motivation -->
+            <article class="intro-slide" id="intro-slide-2" role="group" aria-roledescription="slide" aria-label="2 of 2: Motivation">
+              <p class="slide-eyebrow">Motivation</p>
+              <h2 class="slide-title">Not All of the Future Is Equally Important</h2>
+              <figure class="paper-figure teaser-figure">
+                <img src="static/images/teaser.png" width="1174" height="712" alt="Not all of the future is equally important: only rinse the knife is content information, while tap, dish rack, sink and sponge are context information.">
+              </figure>
+              <p class="figure-caption slide-caption">
+                To answer <em>what will I do next?</em> from what is seen now, only a small part of the future clip carries
+                content information (<em>rinse the knife</em>). Most of it is context information (tap, dish rack, sink, sponge)
+                that neither answers the question nor reflects the expected action.
+              </p>
+              <p class="slide-takeaway">Foresight learning should amplify content and suppress context</p>
+            </article>
+
+          </div>
+
+          <div class="intro-nav">
+            <button class="intro-arrow" type="button" data-step="-1" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+            <button class="intro-tab is-active" type="button" data-slide="0" aria-controls="intro-slide-1" aria-current="true"><span class="intro-tab-num">1</span>Background</button>
+            <button class="intro-tab" type="button" data-slide="1" aria-controls="intro-slide-2"><span class="intro-tab-num">2</span>Motivation</button>
+            <button class="intro-arrow" type="button" data-step="1" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <!-- End teaser image -->
+  <!-- End intro slides -->
 
 
   <!-- Paper abstract -->

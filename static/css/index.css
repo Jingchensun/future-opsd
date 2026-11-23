@@ -1024,6 +1024,345 @@ a:focus {
   margin-top: 2.5rem;
 }
 
+/* ---------- Intro slides: background -> motivation ---------- */
+.intro-deck {
+  outline: none;
+}
+
+.intro-deck:focus-visible .intro-track {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+}
+
+/* Slides are stacked in one grid cell, so the deck keeps the height of the
+   tallest slide and the controls do not jump when switching. */
+.intro-track {
+  display: grid;
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.intro-slide {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.75rem 2rem 1.5rem;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(16px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.intro-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s;
+}
+
+.slide-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.slide-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.slide-takeaway {
+  margin-top: auto;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #1e3a8a;
+  background: #eff6ff;
+  border-radius: 10px;
+}
+
+/* Slide 1: two task cards + task / why-it-matters column */
+.bg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.task-case {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  background: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.task-pill {
+  display: block;
+  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1.5px solid;
+  border-radius: 999px;
+}
+
+.task-open .task-pill { color: #1d4ed8; border-color: #93b4f0; background: #e0ecff; }
+.task-plan .task-pill { color: #c2410c; border-color: #f5b971; background: #fdf3d4; }
+
+.task-case img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+}
+
+.task-q {
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.task-a {
+  color: #15803d;
+  font-weight: 500;
+}
+
+.task-options li {
+  color: var(--text-primary);
+}
+
+.task-options li.is-correct {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.task-options .nowrap {
+  white-space: nowrap;
+}
+
+.task-eval {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-light);
+}
+
+.bg-text h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.bg-text p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+
+.why-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  color: var(--text-secondary);
+}
+
+.why-list li:last-child {
+  margin-bottom: 0;
+}
+
+.why-list b {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.why-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+.why-blue    { color: #2563eb; background: #dbeafe; }
+.why-orange  { color: #ea580c; background: #ffedd5; }
+.why-green   { color: #16a34a; background: #dcfce7; }
+.why-crimson { color: #be123c; background: #ffe4e6; }
+
+/* Slide 2: motivation figure */
+.intro-slide .teaser-figure {
+  max-width: 640px;
+}
+
+.intro-slide .slide-caption {
+  max-width: 46rem;
+  margin: 0.75rem auto 1.25rem;
+  text-align: center;
+}
+
+/* Controls */
+.intro-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.intro-arrow,
+.intro-tab {
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--text-secondary);
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.intro-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 0.85rem;
+  border-radius: 50%;
+}
+
+.intro-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.95rem 0.4rem 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.intro-tab-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  background: var(--background-accent);
+}
+
+.intro-arrow:hover,
+.intro-tab:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.intro-tab.is-active {
+  color: #fff;
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.intro-tab.is-active .intro-tab-num {
+  color: #fff;
+  background: rgb(255 255 255 / 0.2);
+}
+
+.intro-arrow:focus-visible,
+.intro-tab:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 1023px) {
+  .bg-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bg-text {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* On phones the slides differ a lot in height, so only the active one takes space. */
+  .intro-slide {
+    display: none;
+    padding: 1.25rem 1rem 1rem;
+  }
+
+  .intro-slide.is-active {
+    display: flex;
+  }
+
+  .slide-title {
+    font-size: 1.25rem;
+  }
+
+  .slide-takeaway {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .bg-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .intro-nav {
+    gap: 0.35rem;
+  }
+
+  .intro-arrow {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .intro-tab {
+    padding: 0.35rem 0.7rem 0.35rem 0.35rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-slide,
+  .intro-slide.is-active {
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Keep the title on two lines on desktop (the line break is hidden below 1024px) */
 @media screen and (min-width: 1024px) {
   .publication-title {

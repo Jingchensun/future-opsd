@@ -120,6 +120,71 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
+// Intro slides (background -> motivation): arrows, tabs, keyboard and swipe.
+// No autoplay, since the slides are meant to be read.
+function setupIntroSlides() {
+    const deck = document.getElementById('intro-deck');
+    if (!deck) return;
+
+    const slides = Array.from(deck.querySelectorAll('.intro-slide'));
+    const tabs = Array.from(deck.querySelectorAll('.intro-tab'));
+    let current = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
+
+    function show(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => {
+            const active = i === current;
+            slide.classList.toggle('is-active', active);
+            slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+        });
+        tabs.forEach((tab, i) => {
+            const active = i === current;
+            tab.classList.toggle('is-active', active);
+            if (active) {
+                tab.setAttribute('aria-current', 'true');
+            } else {
+                tab.removeAttribute('aria-current');
+            }
+        });
+    }
+
+    deck.querySelectorAll('.intro-arrow').forEach(btn => {
+        btn.addEventListener('click', () => show(current + Number(btn.dataset.step)));
+    });
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => show(Number(tab.dataset.slide)));
+    });
+
+    deck.addEventListener('keydown', event => {
+        if (event.key === 'ArrowRight') { show(current + 1); event.preventDefault(); }
+        if (event.key === 'ArrowLeft') { show(current - 1); event.preventDefault(); }
+    });
+
+    let touchX = null;
+    let touchY = null;
+    deck.addEventListener('touchstart', event => {
+        touchX = event.touches[0].clientX;
+        touchY = event.touches[0].clientY;
+    }, { passive: true });
+    deck.addEventListener('touchend', event => {
+        if (touchX === null) return;
+        const dx = event.changedTouches[0].clientX - touchX;
+        const dy = event.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+            show(current + (dx < 0 ? 1 : -1));
+        }
+        touchX = null;
+    }, { passive: true });
+
+    show(current);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupIntroSlides);
+} else {
+    setupIntroSlides();
+}
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 

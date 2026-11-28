@@ -41,45 +41,14 @@ which amplifies decision-relevant content of the real future and suppresses the 
 
 ## 🦙 Model Zoo
 
-Future-OPSD checkpoints (z = future frames, λ = 0.75, 100 steps × 256 prompts), laid out like Tables 1 and 2 of the paper.
-Each checkpoint is chosen among three training seeds as the one with the fewest scores below the base model (ties broken
-by the smallest total shortfall, then by the in-domain score). All numbers are measured with the evaluation protocol of
-this repository ([3.1](#31-evaluate-the-released-checkpoints)); "General Video Avg" averages TempCompass, TemporalBench,
-Video-MME and MVBench, and bold marks the higher score of each pair.
+Future-OPSD checkpoints (z = future frames, λ = 0.75, 100 steps × 256 prompts), one per student and training set,
+matching the settings of Tables 1 and 2 of the paper. Each checkpoint is chosen among three training seeds as the one with
+the fewest scores below the base model (ties broken by the smallest total shortfall, then by the in-domain score).
 
-**Trained on Future-L1-50K** (Table 1 setting)
-
-<table>
-<thead>
-<tr><th rowspan="2">Model</th><th rowspan="2">Method</th><th colspan="3">TwiFF-Bench (in-domain)</th><th colspan="3">SEED-Bench-R1</th><th rowspan="2">General<br>Video Avg</th></tr>
-<tr><th>CoT</th><th>Ans.</th><th>Avg</th><th>L1</th><th>L2</th><th>L3</th></tr>
-</thead>
-<tbody>
-<tr><td rowspan="3"><b>Qwen3-VL-8B</b></td><td>Base</td><td>58.6</td><td>48.7</td><td>53.6</td><td>45.4</td><td>47.5</td><td>39.7</td><td>56.0</td></tr>
-<tr><td><a href="https://huggingface.co/jsun39/Future-OPSD-Qwen3-VL-8B-Future-L1"><b>Future-OPSD</b></a></td><td><b>70.8</b></td><td><b>61.5</b></td><td><b>66.1</b></td><td><b>45.9</b></td><td><b>48.4</b></td><td><b>40.1</b></td><td><b>57.3</b></td></tr>
-<tr><td><i>Δ vs. Base</i></td><td><i>+12.2</i></td><td><i>+12.8</i></td><td><i>+12.5</i></td><td><i>+0.5</i></td><td><i>+0.9</i></td><td><i>+0.4</i></td><td><i>+1.3</i></td></tr>
-<tr><td rowspan="3"><b>Qwen3.5-9B</b></td><td>Base</td><td>62.4</td><td>54.5</td><td>58.5</td><td>44.3</td><td>44.9</td><td>37.9</td><td>57.0</td></tr>
-<tr><td><a href="https://huggingface.co/jsun39/Future-OPSD-Qwen3.5-9B-Future-L1"><b>Future-OPSD</b></a></td><td><b>69.9</b></td><td><b>65.7</b></td><td><b>67.8</b></td><td><b>45.4</b></td><td><b>47.1</b></td><td><b>38.0</b></td><td><b>57.2</b></td></tr>
-<tr><td><i>Δ vs. Base</i></td><td><i>+7.5</i></td><td><i>+11.2</i></td><td><i>+9.3</i></td><td><i>+1.1</i></td><td><i>+2.2</i></td><td><i>+0.1</i></td><td><i>+0.2</i></td></tr>
-</tbody>
-</table>
-
-**Trained on EgoPlan-IT** (Table 2 setting)
-
-<table>
-<thead>
-<tr><th rowspan="2">Model</th><th rowspan="2">Method</th><th colspan="3">SEED-Bench-R1 (in-domain)</th><th colspan="3">TwiFF-Bench</th><th rowspan="2">General<br>Video Avg</th></tr>
-<tr><th>L1</th><th>L2</th><th>L3</th><th>CoT</th><th>Ans.</th><th>Avg</th></tr>
-</thead>
-<tbody>
-<tr><td rowspan="3"><b>Qwen3-VL-8B</b></td><td>Base</td><td>45.4</td><td>47.5</td><td>39.7</td><td>58.6</td><td>48.7</td><td>53.6</td><td>56.0</td></tr>
-<tr><td><a href="https://huggingface.co/jsun39/Future-OPSD-Qwen3-VL-8B-EgoPlan-IT"><b>Future-OPSD</b></a></td><td><b>54.4</b></td><td><b>56.5</b></td><td><b>50.2</b></td><td><b>65.1</b></td><td><b>55.0</b></td><td><b>60.0</b></td><td><b>56.2</b></td></tr>
-<tr><td><i>Δ vs. Base</i></td><td><i>+9.0</i></td><td><i>+9.0</i></td><td><i>+10.5</i></td><td><i>+6.5</i></td><td><i>+6.3</i></td><td><i>+6.4</i></td><td><i>+0.2</i></td></tr>
-<tr><td rowspan="3"><b>Qwen3.5-9B</b></td><td>Base</td><td>44.3</td><td>44.9</td><td>37.9</td><td>62.4</td><td>54.5</td><td>58.5</td><td>57.0</td></tr>
-<tr><td><a href="https://huggingface.co/jsun39/Future-OPSD-Qwen3.5-9B-EgoPlan-IT"><b>Future-OPSD</b></a></td><td><b>57.9</b></td><td><b>58.3</b></td><td><b>54.2</b></td><td><b>63.7</b></td><td><b>57.9</b></td><td><b>60.8</b></td><td><b>57.4</b></td></tr>
-<tr><td><i>Δ vs. Base</i></td><td><i>+13.6</i></td><td><i>+13.4</i></td><td><i>+16.3</i></td><td><i>+1.3</i></td><td><i>+3.4</i></td><td><i>+2.3</i></td><td><i>+0.4</i></td></tr>
-</tbody>
-</table>
+| Student | Trained on Future-L1-50K (Table 1 setting) | Trained on EgoPlan-IT (Table 2 setting) |
+|---|---|---|
+| **Qwen3-VL-8B-Instruct** | [`Future-OPSD-Qwen3-VL-8B-Future-L1`](https://huggingface.co/jsun39/Future-OPSD-Qwen3-VL-8B-Future-L1) | [`Future-OPSD-Qwen3-VL-8B-EgoPlan-IT`](https://huggingface.co/jsun39/Future-OPSD-Qwen3-VL-8B-EgoPlan-IT) |
+| **Qwen3.5-9B** | [`Future-OPSD-Qwen3.5-9B-Future-L1`](https://huggingface.co/jsun39/Future-OPSD-Qwen3.5-9B-Future-L1) | [`Future-OPSD-Qwen3.5-9B-EgoPlan-IT`](https://huggingface.co/jsun39/Future-OPSD-Qwen3.5-9B-EgoPlan-IT) |
 
 ## 🗂️ Repository layout
 
@@ -262,9 +231,9 @@ TASKS="temporalbench_short_qa:temporalbench/short_qa" bash eval/eval_video3.sh $
 
 Scores are written to `$OUTPUT_ROOT/$TAG/{summary,video3_summary,general_summary}.json` (TwiFF-Bench in `summary.json`
 on the 1–5 scale). A script that prints "ALL DONE" has not necessarily scored every benchmark, so check the summary files.
-`eval/eval_model.sh` starts the Qwen3.6-27B judge on all visible GPUs after generation and stops it afterwards. The
-expected scores are those of the [Model Zoo](#-model-zoo); re-evaluation matches up to small vLLM / GPU nondeterminism
-and judge noise (about ±0.5 on TwiFF-Bench).
+`eval/eval_model.sh` starts the Qwen3.6-27B judge on all visible GPUs after generation and stops it afterwards.
+Repeated evaluations of the same checkpoint differ slightly because of vLLM / GPU nondeterminism and judge noise (about
+±0.5 on TwiFF-Bench).
 
 ### 3.2 Train Future-OPSD
 
